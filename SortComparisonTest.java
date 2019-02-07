@@ -8,16 +8,14 @@ import org.junit.runners.JUnit4;
 /**
  *  Test class for SortComparison.java
  *
- *  @author
+ *  @author Oscar O'Neill
  *  @version HT 2019
  */
 @RunWith(JUnit4.class)
-public class SortComparisonTest
-{
+public class SortComparisonTest {
     //~ Constructor ........................................................
     @Test
-    public void testConstructor()
-    {
+    public void testConstructor() {
         new SortComparison();
     }
 
@@ -28,10 +26,9 @@ public class SortComparisonTest
      * Check that the methods work for empty arrays
      */
     @Test
-    public void testEmpty()
-    {
+    public void testEmpty() {
+    	
     }
-
 
     // TODO: add more tests here. Each line of code and ech decision in Collinear.java should
     // be executed at least once from at least one test.
@@ -42,10 +39,7 @@ public class SortComparisonTest
      *  Use this main method to create the experiments needed to answer the experimental performance questions of this assignment.
      *
      */
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         //TODO: implement this method
     }
-
 }
-

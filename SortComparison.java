@@ -4,12 +4,11 @@
  *  This class contains static methods that implementing sorting of an array of numbers
  *  using different sort algorithms.
  *
- *  @author 
+ *  @author Oscar O'Neill
  *  @version HT 2019
  */
 
- class SortComparison {
-
+class SortComparison {
     /**
      * Sorts an array of doubles using InsertionSort.
      * This method is static, thus it can be called as SortComparison.sort(a)
@@ -17,10 +16,9 @@
      * @return array sorted in ascending order.
      *
      */
-    static double [] insertionSort (double a[]){
-
-        //todo: implement the sort
-    }//end insertionsort
+    static double [] insertionSort (double a[]) {
+        // TODO: implement the sort
+    } // end insertionsort
 
     /**
      * Sorts an array of doubles using Quick Sort.
@@ -29,11 +27,10 @@
      * @return array sorted in ascending order
      *
      */
-    static double [] quickSort (double a[]){
-	
-		 //todo: implement the sort
+    static double [] quickSort (double a[]) {
+		 // TODO: implement the sort
 
-    }//end quicksort
+    } // end quicksort
 
     /**
      * Sorts an array of doubles using Merge Sort.
@@ -51,12 +48,9 @@
      */
 
     static double[] mergeSortIterative (double a[]) {
-
-		 //todo: implement the sort
+    	// TODO: implement the sort
 	
-    }//end mergesortIterative
-    
-    
+    } // end mergesortIterative
     
     /**
      * Sorts an array of doubles using recursive implementation of Merge Sort.
@@ -66,12 +60,8 @@
      * @return after the method returns, the array must be in ascending sorted order.
      */
     static double[] mergeSortRecursive (double a[]) {
-    	
-
-    	//todo: implement the sort
-	
-   }//end mergeSortRecursive
-    	
+    	// TODO: implement the sort
+    } // end mergeSortRecursive
     
     /**
      * Sorts an array of doubles using Selection Sort.
@@ -80,19 +70,11 @@
      * @return array sorted in ascending order
      *
      */
-    static double [] selectionSort (double a[]){
-
-         //todo: implement the sort
-
-    }//end selectionsort
-
-   
-
+    static double [] selectionSort (double a[]) {
+    	// TODO: implement the sort
+    } // end selectionsort
 
     public static void main(String[] args) {
-
-        //todo: do experiments as per assignment instructions
+    	// TODO: do experiments as per assignment instructions
     }
-
- }//end class
-
+} // end class

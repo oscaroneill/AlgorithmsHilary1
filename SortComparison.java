@@ -14,10 +14,23 @@ class SortComparison {
      * This method is static, thus it can be called as SortComparison.sort(a)
      * @param a: An unsorted array of doubles.
      * @return array sorted in ascending order.
-     *
      */
-    static double [] insertionSort (double a[]) {
-        // TODO: implement the sort
+    static double[] insertionSort (double a[]) {
+        int unsortedElement = 1;
+        int currentElement = 1;
+        for (int j = unsortedElement; j < a.length; j++) {
+        	for (int i = unsortedElement-1; i >= 0; i--) {
+            	if (a[i] > a[currentElement]) {
+            		double temp = a[currentElement];
+            		a[currentElement] = a[i];
+            		a[i] = temp;
+            		currentElement--;
+            	}
+            }
+            unsortedElement++;
+            currentElement = unsortedElement;
+        }
+        return a;
     } // end insertionsort
 
     /**
@@ -27,9 +40,11 @@ class SortComparison {
      * @return array sorted in ascending order
      *
      */
-    static double [] quickSort (double a[]) {
-		 // TODO: implement the sort
-
+    static double[] quickSort (double a[]) {
+    	if (a.length == 0 || a.length == 1) {
+    		return a;
+    	}
+		return a;
     } // end quicksort
 
     /**
@@ -37,7 +52,6 @@ class SortComparison {
      * This method is static, thus it can be called as SortComparison.sort(a)
      * @param a: An unsorted array of doubles.
      * @return array sorted in ascending order
-     *
      */
     /**
      * Sorts an array of doubles using iterative implementation of Merge Sort.
@@ -48,8 +62,7 @@ class SortComparison {
      */
 
     static double[] mergeSortIterative (double a[]) {
-    	// TODO: implement the sort
-	
+    	return a;
     } // end mergesortIterative
     
     /**
@@ -60,7 +73,7 @@ class SortComparison {
      * @return after the method returns, the array must be in ascending sorted order.
      */
     static double[] mergeSortRecursive (double a[]) {
-    	// TODO: implement the sort
+    	return a;
     } // end mergeSortRecursive
     
     /**
@@ -70,11 +83,13 @@ class SortComparison {
      * @return array sorted in ascending order
      *
      */
-    static double [] selectionSort (double a[]) {
-    	// TODO: implement the sort
+    static double[] selectionSort (double a[]) {
+    	return a;
     } // end selectionsort
 
     public static void main(String[] args) {
     	// TODO: do experiments as per assignment instructions
+    	double[] a = new double[]{62, 83, 18, 53, 07, 17, 95, 86, 42, 69, 25};
+    	SortComparison.insertionSort(a);
     }
 } // end class

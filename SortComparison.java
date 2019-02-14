@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 // -------------------------------------------------------------------------
 
 /**
@@ -43,8 +45,60 @@ class SortComparison {
     static double[] quickSort (double a[]) {
     	if (a.length == 0 || a.length == 1) {
     		return a;
+    	} else {
+    		int pivot = 0;
+    		int left = 0;
+    		int right = a.length-1;
+    		boolean finished = false;
+    		
+    		while (!finished) {
+    			if (left == right) {
+    				System.out.print("a: ");
+    				for (int i = 0; i < a.length; i++) {
+    					System.out.print(a[i] + ", ");
+    				}
+    				System.out.print("\n");
+    				
+    				double[] b = Arrays.copyOfRange(a, 0, pivot);
+    				
+    				System.out.print("b: ");
+    				for (int j = 0; j < b.length; j++) {
+    					System.out.print(b[j] + ", ");
+    				}
+    				System.out.print("\n");
+    				
+    				double[] c = Arrays.copyOfRange(a, pivot+1, a.length);
+    				
+    				System.out.print("c: ");
+    				for (int k = 0; k < c.length; k++) {
+    					System.out.print(c[k] + ", ");
+    				}
+    				System.out.print("\n");
+    				
+    				quickSort(b);
+    				quickSort(c);
+    			} else if (pivot == left) {
+    				if (a[pivot] < a[right]) {
+        				right--;
+        			} else {
+        				double tmp = a[pivot];
+        				a[pivot] = a[right];
+        				a[right] = tmp;
+        				pivot = right;
+        			}
+        		} else if (pivot == right) {
+        			if (a[pivot] > a[left]) {
+        				left++;
+        			} else {
+        				double tmp = a[pivot];
+        				a[pivot] = a[left];
+        				a[left] = tmp;
+        				pivot = left;
+        			}
+        		}
+    		}
+    		return a;
     	}
-		return a;
     } // end quicksort
 
     /**
@@ -89,7 +143,8 @@ class SortComparison {
 
     public static void main(String[] args) {
     	// TODO: do experiments as per assignment instructions
-    	double[] a = new double[]{62, 83, 18, 53, 07, 17, 95, 86, 42, 69, 25};
-    	SortComparison.insertionSort(a);
+    	//double[] a = new double[]{62, 83, 18, 53, 07, 17, 95, 86, 42, 69, 25};
+    	double[] a = new double[]{5, 2, 6, 1, 3, 4};
+    	SortComparison.quickSort(a);
     }
 } // end class

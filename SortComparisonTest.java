@@ -16,6 +16,22 @@ import junit.framework.Assert;
  *  @author Oscar O'Neill (17330989)
  *  @version HT 2019
  */
+
+/*
+a. Which of the sorting algorithms does the order of input have an impact on? Why?
+
+b. Which algorithm has the biggest difference between the best and worst performance, based
+on the type of input, for the input of size 1000? Why?
+
+c. Which algorithm has the best/worst scalability, i.e., the difference in performance time
+based on the input size? Please consider only input files with random order for this answer.
+
+d. Did you observe any difference between iterative and recursive implementations of merge
+sort?
+
+e. Which algorithm is the fastest for each of the 7 input files?
+
+*/
 @RunWith(JUnit4.class)
 public class SortComparisonTest {
     //~ Constructor ........................................................
@@ -59,6 +75,90 @@ public class SortComparisonTest {
     	double[] sortedArray3 = new double[]{83};
     	
     	assertTrue(Arrays.equals(sortedArray3, SortComparison.insertionSort(unsortedArray3)));
+    }
+    
+    /**
+     * Check that quick sort works for different arrays
+     */
+    @Test
+    public void testQuickSort() {
+    	double[] unsortedArray = new double[]{62, 83, 18, 53, 07, 17, 95, 86, 42, 69, 25};
+    	double[] sortedArray = new double[]{07, 17, 18, 25, 42, 53, 62, 69, 83, 86, 95};
+    	
+    	assertTrue(Arrays.equals(sortedArray, SortComparison.quickSort(unsortedArray)));
+    	
+    	double[] unsortedArray2 = new double[]{83, 62};
+    	double[] sortedArray2 = new double[]{62, 83};
+    	
+    	assertTrue(Arrays.equals(sortedArray2, SortComparison.quickSort(unsortedArray2)));
+    	
+    	double[] unsortedArray3 = new double[]{83};
+    	double[] sortedArray3 = new double[]{83};
+    	
+    	assertTrue(Arrays.equals(sortedArray3, SortComparison.quickSort(unsortedArray3)));
+    }
+    
+    /**
+     * Check that iterative merge sort works for different arrays
+     */
+    @Test
+    public void testMergeSortIterative() {
+    	double[] unsortedArray = new double[]{62, 83, 18, 53, 07, 17, 95, 86, 42, 69, 25};
+    	double[] sortedArray = new double[]{07, 17, 18, 25, 42, 53, 62, 69, 83, 86, 95};
+    	
+    	assertTrue(Arrays.equals(sortedArray, SortComparison.mergeSortIterative(unsortedArray)));
+    	
+    	double[] unsortedArray2 = new double[]{83, 62};
+    	double[] sortedArray2 = new double[]{62, 83};
+    	
+    	assertTrue(Arrays.equals(sortedArray2, SortComparison.mergeSortIterative(unsortedArray2)));
+    	
+    	double[] unsortedArray3 = new double[]{83};
+    	double[] sortedArray3 = new double[]{83};
+    	
+    	assertTrue(Arrays.equals(sortedArray3, SortComparison.mergeSortIterative(unsortedArray3)));
+    }
+    
+    /**
+     * Check that recursive merge sort works for different arrays
+     */
+    @Test
+    public void testMergeSortRecursive() {
+    	double[] unsortedArray = new double[]{62, 83, 18, 53, 07, 17, 95, 86, 42, 69, 25};
+    	double[] sortedArray = new double[]{07, 17, 18, 25, 42, 53, 62, 69, 83, 86, 95};
+    	
+    	assertTrue(Arrays.equals(sortedArray, SortComparison.mergeSortRecursive(unsortedArray)));
+    	
+    	double[] unsortedArray2 = new double[]{83, 62};
+    	double[] sortedArray2 = new double[]{62, 83};
+    	
+    	assertTrue(Arrays.equals(sortedArray2, SortComparison.mergeSortRecursive(unsortedArray2)));
+    	
+    	double[] unsortedArray3 = new double[]{83};
+    	double[] sortedArray3 = new double[]{83};
+    	
+    	assertTrue(Arrays.equals(sortedArray3, SortComparison.mergeSortRecursive(unsortedArray3)));
+    }
+    
+    /**
+     * Check that selection sort works for different arrays
+     */
+    @Test
+    public void testSelectionSort() {
+    	double[] unsortedArray = new double[]{62, 83, 18, 53, 07, 17, 95, 86, 42, 69, 25};
+    	double[] sortedArray = new double[]{07, 17, 18, 25, 42, 53, 62, 69, 83, 86, 95};
+    	
+    	assertTrue(Arrays.equals(sortedArray, SortComparison.selectionSort(unsortedArray)));
+    	
+    	double[] unsortedArray2 = new double[]{83, 62};
+    	double[] sortedArray2 = new double[]{62, 83};
+    	
+    	assertTrue(Arrays.equals(sortedArray2, SortComparison.selectionSort(unsortedArray2)));
+    	
+    	double[] unsortedArray3 = new double[]{83};
+    	double[] sortedArray3 = new double[]{83};
+    	
+    	assertTrue(Arrays.equals(sortedArray3, SortComparison.selectionSort(unsortedArray3)));
     }
     
     // ----------------------------------------------------------

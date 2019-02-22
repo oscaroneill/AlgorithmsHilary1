@@ -1,6 +1,11 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 
 import org.junit.Test;
@@ -165,9 +170,76 @@ public class SortComparisonTest {
     /**
      *  Main Method.
      *  Use this main method to create the experiments needed to answer the experimental performance questions of this assignment.
+     * @throws IOException 
      *
      */
-    public static void main(String[] args) {
-        //TODO: implement this method
+    public static void main(String[] args) throws IOException {
+    	File file = new File("C:\\Users\\Oscar\\Desktop\\assignment input data files\\numbers10.txt"); 
+    	  
+    	BufferedReader br = new BufferedReader(new FileReader(file)); 
+    	
+    	double[] nums = new double[10];
+    	double[] numsSorted = new double[10];
+    	
+    	for (int i = 0; i < nums.length; i++) {
+    		nums[i] = Double.parseDouble(br.readLine());
+    	}
+    	
+    	long startTime, stopTime, elapsedTime;
+    	
+    	// Insertion
+    	startTime = System.currentTimeMillis();
+    	
+    	numsSorted = SortComparison.insertionSort(nums);
+
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Insertion time: " + elapsedTime);
+        
+        // Quick
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.quickSort(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Quick time: " + elapsedTime);
+        
+        // Iterative merge
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.mergeSortIterative(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Iterative merge time: " + elapsedTime);
+        
+        // Recursive merge
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.mergeSortRecursive(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Recursive merge time: " + elapsedTime);
+        
+        // Selection
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.selectionSort(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Selection time: " + elapsedTime);
+        
+        System.out.print("Array: ");
+        for (int j = 0; j < numsSorted.length; j++) {
+        	System.out.print(numsSorted[j] + ", ");
+        }
     }
 }

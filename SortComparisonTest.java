@@ -23,6 +23,25 @@ import junit.framework.Assert;
  */
 
 /*
+Results:
++---------------------+--------+-------+-----------------+-----------------+-----------+
+|                     | Insert | Quick | Merge Recursive | Merge Iterative | Selection |
++---------------------+--------+-------+-----------------+-----------------+-----------+
+| 10 random           |   2/3  |   0   |        0        |        0        |     0     |
++---------------------+--------+-------+-----------------+-----------------+-----------+
+| 100 random          |    0   |  1/3  |        0        |        0        |     0     |
++---------------------+--------+-------+-----------------+-----------------+-----------+
+| 1000 random         |  19/3  |  7/3  |        1        |       1/3       |    11/3   |
++---------------------+--------+-------+-----------------+-----------------+-----------+
+| 1000 few unique     |    1   |  4/3  |        0        |       2/3       |     2     |
++---------------------+--------+-------+-----------------+-----------------+-----------+
+| 1000 nearly ordered |   4/3  |  2/3  |       1/3       |        0        |     3     |
++---------------------+--------+-------+-----------------+-----------------+-----------+
+| 1000 reverse order  |   2/3  |  2/3  |       1/3       |        0        |    1/3    |
++---------------------+--------+-------+-----------------+-----------------+-----------+
+| 1000 sorted         |   1/3  |  4/3  |        0        |        0        |    1/3    |
++---------------------+--------+-------+-----------------+-----------------+-----------+
+
 a. Which of the sorting algorithms does the order of input have an impact on? Why?
 
 b. Which algorithm has the biggest difference between the best and worst performance, based
@@ -174,6 +193,7 @@ public class SortComparisonTest {
      *
      */
     public static void main(String[] args) throws IOException {
+    	System.out.println("numbers10.txt:");
     	File file = new File("C:\\Users\\Oscar\\Desktop\\assignment input data files\\numbers10.txt"); 
     	  
     	BufferedReader br = new BufferedReader(new FileReader(file)); 
@@ -237,9 +257,390 @@ public class SortComparisonTest {
         
         System.out.println("Selection time: " + elapsedTime);
         
+        System.out.print("\n");
+        System.out.println("numbers100.txt:");
+    	file = new File("C:\\Users\\Oscar\\Desktop\\assignment input data files\\numbers100.txt"); 
+    	  
+    	br = new BufferedReader(new FileReader(file)); 
+    	
+    	nums = new double[100];
+    	numsSorted = new double[100];
+    	
+    	for (int i = 0; i < nums.length; i++) {
+    		nums[i] = Double.parseDouble(br.readLine());
+    	}
+    
+    	// Insertion
+    	startTime = System.currentTimeMillis();
+    	
+    	numsSorted = SortComparison.insertionSort(nums);
+
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Insertion time: " + elapsedTime);
+        
+        // Quick
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.quickSort(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Quick time: " + elapsedTime);
+        
+        // Iterative merge
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.mergeSortIterative(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Iterative merge time: " + elapsedTime);
+        
+        // Recursive merge
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.mergeSortRecursive(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Recursive merge time: " + elapsedTime);
+        
+        // Selection
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.selectionSort(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Selection time: " + elapsedTime);
+        
+        System.out.print("\n");
+        System.out.println("numbers1000.txt:");
+    	file = new File("C:\\Users\\Oscar\\Desktop\\assignment input data files\\numbers1000.txt"); 
+    	  
+    	br = new BufferedReader(new FileReader(file)); 
+    	
+    	nums = new double[1000];
+    	numsSorted = new double[1000];
+    	
+    	for (int i = 0; i < nums.length; i++) {
+    		nums[i] = Double.parseDouble(br.readLine());
+    	}
+    
+    	// Insertion
+    	startTime = System.currentTimeMillis();
+    	
+    	numsSorted = SortComparison.insertionSort(nums);
+
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Insertion time: " + elapsedTime);
+        
+        // Quick
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.quickSort(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Quick time: " + elapsedTime);
+        
+        // Iterative merge
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.mergeSortIterative(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Iterative merge time: " + elapsedTime);
+        
+        // Recursive merge
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.mergeSortRecursive(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Recursive merge time: " + elapsedTime);
+        
+        // Selection
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.selectionSort(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Selection time: " + elapsedTime);
+        
+        System.out.print("\n");
+        System.out.println("numbers1000Duplicates.txt:");
+    	file = new File("C:\\Users\\Oscar\\Desktop\\assignment input data files\\numbers1000Duplicates.txt"); 
+    	  
+    	br = new BufferedReader(new FileReader(file)); 
+    	
+    	nums = new double[1000];
+    	numsSorted = new double[1000];
+    	
+    	for (int i = 0; i < nums.length; i++) {
+    		nums[i] = Double.parseDouble(br.readLine());
+    	}
+    
+    	// Insertion
+    	startTime = System.currentTimeMillis();
+    	
+    	numsSorted = SortComparison.insertionSort(nums);
+
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Insertion time: " + elapsedTime);
+        
+        // Quick
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.quickSort(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Quick time: " + elapsedTime);
+        
+        // Iterative merge
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.mergeSortIterative(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Iterative merge time: " + elapsedTime);
+        
+        // Recursive merge
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.mergeSortRecursive(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Recursive merge time: " + elapsedTime);
+        
+        // Selection
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.selectionSort(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Selection time: " + elapsedTime);
+        
+        System.out.print("\n");
+        System.out.println("numbersNearlyOrdered1000.txt:");
+    	file = new File("C:\\Users\\Oscar\\Desktop\\assignment input data files\\numbersNearlyOrdered1000.txt"); 
+    	  
+    	br = new BufferedReader(new FileReader(file)); 
+    	
+    	nums = new double[1000];
+    	numsSorted = new double[1000];
+    	
+    	for (int i = 0; i < nums.length; i++) {
+    		nums[i] = Double.parseDouble(br.readLine());
+    	}
+    
+    	// Insertion
+    	startTime = System.currentTimeMillis();
+    	
+    	numsSorted = SortComparison.insertionSort(nums);
+
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Insertion time: " + elapsedTime);
+        
+        // Quick
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.quickSort(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Quick time: " + elapsedTime);
+        
+        // Iterative merge
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.mergeSortIterative(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Iterative merge time: " + elapsedTime);
+        
+        // Recursive merge
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.mergeSortRecursive(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Recursive merge time: " + elapsedTime);
+        
+        // Selection
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.selectionSort(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Selection time: " + elapsedTime);
+        
+        System.out.print("\n");
+        System.out.println("numbersReverse1000.txt:");
+    	file = new File("C:\\Users\\Oscar\\Desktop\\assignment input data files\\numbersReverse1000.txt"); 
+    	  
+    	br = new BufferedReader(new FileReader(file)); 
+    	
+    	nums = new double[1000];
+    	numsSorted = new double[1000];
+    	
+    	for (int i = 0; i < nums.length; i++) {
+    		nums[i] = Double.parseDouble(br.readLine());
+    	}
+    
+    	// Insertion
+    	startTime = System.currentTimeMillis();
+    	
+    	numsSorted = SortComparison.insertionSort(nums);
+
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Insertion time: " + elapsedTime);
+        
+        // Quick
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.quickSort(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Quick time: " + elapsedTime);
+        
+        // Iterative merge
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.mergeSortIterative(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Iterative merge time: " + elapsedTime);
+        
+        // Recursive merge
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.mergeSortRecursive(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Recursive merge time: " + elapsedTime);
+        
+        // Selection
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.selectionSort(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Selection time: " + elapsedTime);
+        
+        System.out.print("\n");
+        System.out.println("numbersSorted1000.txt:");
+    	file = new File("C:\\Users\\Oscar\\Desktop\\assignment input data files\\numbersSorted1000.txt"); 
+    	  
+    	br = new BufferedReader(new FileReader(file)); 
+    	
+    	nums = new double[1000];
+    	numsSorted = new double[1000];
+    	
+    	for (int i = 0; i < nums.length; i++) {
+    		nums[i] = Double.parseDouble(br.readLine());
+    	}
+    
+    	// Insertion
+    	startTime = System.currentTimeMillis();
+    	
+    	numsSorted = SortComparison.insertionSort(nums);
+
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Insertion time: " + elapsedTime);
+        
+        // Quick
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.quickSort(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Quick time: " + elapsedTime);
+        
+        // Iterative merge
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.mergeSortIterative(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Iterative merge time: " + elapsedTime);
+        
+        // Recursive merge
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.mergeSortRecursive(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Recursive merge time: " + elapsedTime);
+        
+        // Selection
+        startTime = System.currentTimeMillis();
+        
+        numsSorted = SortComparison.selectionSort(nums);
+        
+        stopTime = System.currentTimeMillis();
+        elapsedTime = stopTime - startTime;
+        
+        System.out.println("Selection time: " + elapsedTime);
+        
+        System.out.print("\n");
+        /*
         System.out.print("Array: ");
         for (int j = 0; j < numsSorted.length; j++) {
         	System.out.print(numsSorted[j] + ", ");
         }
+        */
     }
 }

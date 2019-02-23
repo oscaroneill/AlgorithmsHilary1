@@ -1,0 +1,48 @@
+numbers10.txt:
+Insertion time: 0
+Quick time: 0
+Iterative merge time: 0
+Recursive merge time: 0
+Selection time: 0
+
+numbers100.txt:
+Insertion time: 0
+Quick time: 0
+Iterative merge time: 0
+Recursive merge time: 0
+Selection time: 0
+
+numbers1000.txt:
+Insertion time: 6
+Quick time: 2
+Iterative merge time: 0
+Recursive merge time: 1
+Selection time: 3
+
+numbers1000Duplicates.txt:
+Insertion time: 1
+Quick time: 2
+Iterative merge time: 0
+Recursive merge time: 0
+Selection time: 3
+
+numbersNearlyOrdered1000.txt:
+Insertion time: 2
+Quick time: 0
+Iterative merge time: 0
+Recursive merge time: 0
+Selection time: 1
+
+numbersReverse1000.txt:
+Insertion time: 1
+Quick time: 1
+Iterative merge time: 0
+Recursive merge time: 0
+Selection time: 1
+
+numbersSorted1000.txt:
+Insertion time: 0
+Quick time: 2
+Iterative merge time: 0
+Recursive merge time: 0
+Selection time: 0

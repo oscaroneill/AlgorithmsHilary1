@@ -235,8 +235,5 @@ class SortComparison {
 
     public static void main(String[] args) {
     	// TODO: do experiments as per assignment instructions
-    	//double[] a = new double[]{62, 83, 18, 53, 07, 17, 95, 86, 42, 69, 25};
-    	//double[] a = new double[]{5, 2, 6, 1, 3, 4};
-    	//SortComparison.quickSort(a);
     }
 } // end class

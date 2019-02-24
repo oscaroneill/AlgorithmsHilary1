@@ -27,35 +27,49 @@ Results:
 +---------------------+--------+-------+-----------------+-----------------+-----------+
 |                     | Insert | Quick | Merge Recursive | Merge Iterative | Selection |
 +---------------------+--------+-------+-----------------+-----------------+-----------+
-| 10 random           |   2/3  |   0   |        0        |        0        |     0     |
+| 10 random           |  0.67  |   0   |        0        |        0        |     0     |
 +---------------------+--------+-------+-----------------+-----------------+-----------+
-| 100 random          |    0   |  1/3  |        0        |        0        |     0     |
+| 100 random          |    0   |  0.33 |        0        |        0        |     0     |
 +---------------------+--------+-------+-----------------+-----------------+-----------+
-| 1000 random         |  19/3  |  7/3  |        1        |       1/3       |    11/3   |
+| 1000 random         |  6.33  |  2.33 |        1        |       0.33      |    3.67   |
 +---------------------+--------+-------+-----------------+-----------------+-----------+
-| 1000 few unique     |    1   |  4/3  |        0        |       2/3       |     2     |
+| 1000 few unique     |    1   |  1.33 |        0        |       0.67      |     2     |
 +---------------------+--------+-------+-----------------+-----------------+-----------+
-| 1000 nearly ordered |   4/3  |  2/3  |       1/3       |        0        |     3     |
+| 1000 nearly ordered |  1.33  |  0.67 |       0.33      |        0        |     3     |
 +---------------------+--------+-------+-----------------+-----------------+-----------+
-| 1000 reverse order  |   2/3  |  2/3  |       1/3       |        0        |    1/3    |
+| 1000 reverse order  |  0.67  |  0.67 |       0.33      |        0        |    0.33   |
 +---------------------+--------+-------+-----------------+-----------------+-----------+
-| 1000 sorted         |   1/3  |  4/3  |        0        |        0        |    1/3    |
+| 1000 sorted         |  0.33  |  1.33 |        0        |        0        |    0.33   |
 +---------------------+--------+-------+-----------------+-----------------+-----------+
 
 a. Which of the sorting algorithms does the order of input have an impact on? Why?
+Insert, Quick and Selection are the most affected by the order of input.
+Selection is impacted because it must go through the entire array
 
 b. Which algorithm has the biggest difference between the best and worst performance, based
 on the type of input, for the input of size 1000? Why?
 
+
 c. Which algorithm has the best/worst scalability, i.e., the difference in performance time
 based on the input size? Please consider only input files with random order for this answer.
+Best: Merge Iterative
+Worst: Insert
 
 d. Did you observe any difference between iterative and recursive implementations of merge
 sort?
+Iterative was easier to debug as recursion can often cause infinite loops
 
 e. Which algorithm is the fastest for each of the 7 input files?
-
+Merge Iterative is the best overall. For each file:
+- 10 random: Quick, Merge Recursive, Merge Iterative, Selection
+- 100 random: Insert, Merge Recursive, Merge Iterative, Selection
+- 1000 random: Merge Iterative
+- 1000 few unique: Merge Recursive
+- 1000 nearly ordered: Merge Iterative
+- 1000 reverse order: Merge Iterative
+- 1000 sorted: Merge Recursive, Merge Iterative
 */
+
 @RunWith(JUnit4.class)
 public class SortComparisonTest {
     //~ Constructor ........................................................
@@ -216,7 +230,8 @@ public class SortComparisonTest {
         elapsedTime = stopTime - startTime;
         
         System.out.println("Insertion time: " + elapsedTime);
-        
+        System.out.print("Array: ");
+
         // Quick
         startTime = System.currentTimeMillis();
         
@@ -226,7 +241,7 @@ public class SortComparisonTest {
         elapsedTime = stopTime - startTime;
         
         System.out.println("Quick time: " + elapsedTime);
-        
+
         // Iterative merge
         startTime = System.currentTimeMillis();
         
@@ -236,7 +251,7 @@ public class SortComparisonTest {
         elapsedTime = stopTime - startTime;
         
         System.out.println("Iterative merge time: " + elapsedTime);
-        
+
         // Recursive merge
         startTime = System.currentTimeMillis();
         
@@ -246,7 +261,7 @@ public class SortComparisonTest {
         elapsedTime = stopTime - startTime;
         
         System.out.println("Recursive merge time: " + elapsedTime);
-        
+
         // Selection
         startTime = System.currentTimeMillis();
         
@@ -256,7 +271,7 @@ public class SortComparisonTest {
         elapsedTime = stopTime - startTime;
         
         System.out.println("Selection time: " + elapsedTime);
-        
+
         System.out.print("\n");
         System.out.println("numbers100.txt:");
     	file = new File("C:\\Users\\Oscar\\Desktop\\assignment input data files\\numbers100.txt"); 
@@ -636,11 +651,5 @@ public class SortComparisonTest {
         System.out.println("Selection time: " + elapsedTime);
         
         System.out.print("\n");
-        /*
-        System.out.print("Array: ");
-        for (int j = 0; j < numsSorted.length; j++) {
-        	System.out.print(numsSorted[j] + ", ");
-        }
-        */
     }
 }
